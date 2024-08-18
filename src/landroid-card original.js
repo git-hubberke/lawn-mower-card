@@ -96,7 +96,7 @@ class LandroidCard extends LitElement {
         .filter((entity) => entity.device_id === deviceId)
         .map((entity) => entity.entity_id);
 
-      // Getting entity object from this.hass.states for the specified entity_id
+      // Получение объекта сущностей из this.hass.states для указанных entity_id
       const entities = entitiesForDevice.reduce((acc, entityId) => {
         acc[entityId] = this.hass.states[entityId];
         return acc;
@@ -467,7 +467,7 @@ class LandroidCard extends LitElement {
 
     const entityAttributes = { ...entity.attributes };
 
-    // We move some attributes to the top level
+    // Выносим некоторые атрибуты на верхний уровень
     return {
       status:
         entityAttributes.status ||
@@ -1106,21 +1106,14 @@ class LandroidCard extends LitElement {
           ${this.renderButton(consts.ACTION_DOCK, { label: true })}
         `;
 
-/*      case consts.STATE_PAUSED:
+      case consts.STATE_PAUSED:
         return html`
           ${this.renderButton(consts.ACTION_MOWING, { label: true })}
           ${this.renderButton(consts.ACTION_EDGECUT, { label: true, entity: this.getEntityObject(consts.BUTTON_EDGECUT_SUFFIX) })}
           ${this.renderButton(consts.ACTION_DOCK, { label: true })}
         `;
-*/
 
-      case consts.STATE_PAUSED:
-        return html`
-          ${this.renderButton(consts.ACTION_MOWING, { label: true })}
-          ${this.renderButton(consts.ACTION_DOCK, { label: true })}
-        `;
-  
-        case consts.STATE_RETURNING:
+      case consts.STATE_RETURNING:
         return html`
           ${this.renderButton(consts.ACTION_MOWING)}
           ${this.renderButton(consts.ACTION_PAUSE)}
@@ -1133,19 +1126,10 @@ class LandroidCard extends LitElement {
       default: {
         return html`
           ${this.renderButton(consts.ACTION_MOWING)}
-          ${state === 'idle' ? this.renderButton(consts.ACTION_DOCK) : ''}
-        `;
-      }
-
-/*      default: {
-        return html`
-          ${this.renderButton(consts.ACTION_MOWING)}
           ${this.renderButton(consts.ACTION_EDGECUT, { entity: this.getEntityObject(consts.BUTTON_EDGECUT_SUFFIX) })}
           ${state === 'idle' ? this.renderButton(consts.ACTION_DOCK) : ''}
         `;
       }
-*/              
-
     }
   }
 
@@ -1234,7 +1218,7 @@ class LandroidCard extends LitElement {
 
     const { state } = this.getAttributes();
 
-/*    return html`
+    return html`
       <ha-card>
         <div class="preview">
           <div class="header">
@@ -1260,23 +1244,6 @@ class LandroidCard extends LitElement {
         ${this.renderConfigBar()}
       </ha-card>
     `;
-*/
-
-    return html`
-      <ha-card>
-        <div class="preview">
-          ${this.renderCameraOrImage(state)}
-          <div class="metadata">
-            ${this.renderName()} ${this.renderStatus()}
-          </div>
-
-          <div class="stats">${this.renderStats(state)}</div>
-          ${this.renderToolbar(state)}
-        </div>
-        ${this.renderConfigBar()}
-      </ha-card>
-    `;
-
   }
 }
 
