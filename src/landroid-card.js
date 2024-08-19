@@ -1120,7 +1120,7 @@ class LandroidCard extends LitElement {
           ${this.renderButton(consts.ACTION_DOCK, { label: true })}
         `;
   
-        case consts.STATE_RETURNING:
+      case consts.STATE_RETURNING:
         return html`
           ${this.renderButton(consts.ACTION_MOWING)}
           ${this.renderButton(consts.ACTION_PAUSE)}
