@@ -1,6 +1,6 @@
 {
   "name": "landroid-card",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Robot lawnmower card for Home Assistant",
   "main": "dist/landroid-card.js",
   "type": "module",
